@@ -70,7 +70,7 @@ This is a temporary script file.
             linewidth=3
         )
     )
-  fig.savefig("rect_%(index)s.png" % locals(), dpi=144, bbox_inches='tight')
+      fig.savefig("rect_%(index)s.png" % locals(), dpi=144, bbox_inches='tight')
 		
                 ax.add_patch(patch)
 		rx, ry = patch.get_xy()
