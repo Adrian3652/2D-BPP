@@ -5,58 +5,58 @@ Spyder Editor
 This is a temporary script file.
 """
 
-from rectpack import newPacker
-from matplotlib import pyplot as plt
-import matplotlib.patches as patches
+       from rectpack import newPacker
+       from matplotlib import pyplot as plt
+       import matplotlib.patches as patches
 
 
-cajas = [(100, 30), (40, 60), (30, 30),(70, 70), (100, 50), (30, 30)]
-contenedores = [(300, 450)]
+       cajas = [(100, 30), (40, 60), (30, 30),(70, 70), (100, 50), (30, 30)]
+       contenedores = [(300, 450)]
 
-packer = newPacker()
-
-
-for c in cajas:
-	packer.add_rect(*c)
+       packer = newPacker()
 
 
-for con in contenedores:
-	packer.add_bin(*con)
-
-packer.pack()
+       for c in cajas:
+	       packer.add_rect(*c)
 
 
-ncontenedores = len(packer)
+       for con in contenedores:
+	       packer.add_bin(*con)
+
+       packer.pack()
 
 
-acontenedor = packer[0]
+       ncontenedores = len(packer)
 
 
-width, height = acontenedor.width, acontenedor.height
+       acontenedor = packer[0]
 
 
-ncaja = len(packer[0])
+       width, height = acontenedor.width, acontenedor.height
 
 
-caja = packer[0][1]
+       ncaja = len(packer[0])
 
 
-x = caja.x # Caja inferior-izquierda coordenada x
-y = caja.y # Caja inferior-izquierda coordenada y
-w = caja.width
-h = caja.height
+       caja = packer[0][1]
 
-for abin in packer:
-  print(abin.bid) # Bin id if it has one
-  for rect in abin:
-    print(rect)
 
-for index, acontenedor in enumerate(packer):
-  bw, bh  = acontenedor.width, acontenedor.height
-  print('contenedor', bw, bh, "nr of rectangles in bin", len(acontenedor))
-  fig = plt.figure(figsize=(12,8))
-  ax = fig.add_subplot(111, aspect='equal')
-  for rect in acontenedor:
+       x = caja.x # Caja inferior-izquierda coordenada x
+       y = caja.y # Caja inferior-izquierda coordenada y
+       w = caja.width
+       h = caja.height
+
+       for acontenedor in packer:
+       print(acontenedor.bid) # Bin id if it has one
+       for rect in acontenedor:
+       print(rect)
+
+       for index, acontenedor in enumerate(packer):
+        bw, bh  = acontenedor.width, acontenedor.height
+        print('contenedor', bw, bh, "nr of rectangles in bin", len(acontenedor))
+        fig = plt.figure(figsize=(12,8))
+        ax = fig.add_subplot(111, aspect='equal')
+        for rect in acontenedor:
     x, y, w, h = caja.x, caja.y, caja.width, caja.height
     plt.axis([0,bw,0,bh])
     print('rectangle', w,h)
@@ -72,7 +72,7 @@ for index, acontenedor in enumerate(packer):
     )
   fig.savefig("rect_%(index)s.png" % locals(), dpi=144, bbox_inches='tight')
 		
-		ax.add_patch(patch)
+                ax.add_patch(patch)
 		rx, ry = patch.get_xy()
 		cx = rx + patch.get_width()/2.0
 		cy = ry + patch.get_height()/2.0
